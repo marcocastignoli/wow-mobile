@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/app_name"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorPrimaryText"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/wow_subtitle"
+                android:textSize="14sp"
+                android:textColor="?attr/colorSecondaryText"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="?attr/colorSecondarySurface">
+
+                <TextView
+                    android:id="@+id/TVWowFolder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="?attr/colorSecondaryText"/>
+
+                <TextView
+                    android:id="@+id/TVWowStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="15sp"
+                    android:textColor="?attr/colorPrimaryText"/>
+
+                <TextView
+                    android:id="@+id/TVWowRealmlist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="13sp"
+                    android:textColor="?attr/colorSecondaryText"/>
+
+                <Button
+                    android:id="@+id/BTSelectFolder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/wow_select_game_folder"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/BTPlay"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/wow_play"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:backgroundTint="?attr/colorAccent"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/BTWowSettings"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/wow_settings"/>
+
+                <Button
+                    android:id="@+id/BTContainerSettings"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/wow_container_settings"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/BTAdvanced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:textColor="?attr/colorSecondaryText"
+                android:text="@string/wow_advanced"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

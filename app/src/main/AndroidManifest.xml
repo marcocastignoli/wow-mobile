@@ -20,7 +20,7 @@
         android:allowAudioPlaybackCapture="true"
         android:label="@string/app_name">
 
-        <activity android:name="com.winlator.MainActivity"
+        <activity android:name="com.winlator.wowmobile.WowMobileActivity"
             android:theme="@style/AppThemeDark"
             android:exported="true"
             android:screenOrientation="sensor"
@@ -29,6 +29,23 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+
+        <activity android:name="com.winlator.wowmobile.WowSettingsActivity"
+            android:theme="@style/AppThemeDark"
+            android:exported="false"
+            android:screenOrientation="sensor" />
+
+        <activity android:name="com.winlator.wowmobile.ContainerSettingsActivity"
+            android:theme="@style/AppThemeDark"
+            android:exported="false"
+            android:screenOrientation="sensor" />
+
+        <activity android:name="com.winlator.MainActivity"
+            android:theme="@style/AppThemeDark"
+            android:exported="false"
+            android:screenOrientation="sensor"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|density|navigation">
         </activity>
 
         <activity android:name="com.winlator.XServerDisplayActivity"

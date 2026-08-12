@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">WoW Mobile</string>
+    <string name="wow_subtitle">World of Warcraft 3.3.5a on Android</string>
+    <string name="wow_play">PLAY</string>
+    <string name="wow_settings">WoW Settings</string>
+    <string name="wow_container_settings">Container Settings</string>
+    <string name="wow_advanced">Advanced (Winlator UI)</string>
+    <string name="wow_select_game_folder">Select game folder</string>
+    <string name="wow_use_this_folder">Use this folder</string>
+    <string name="wow_no_folder_selected">No game folder selected</string>
+    <string name="wow_status_select_folder">Select the folder that contains Wow.exe to get started.</string>
+    <string name="wow_status_invalid_folder">Wow.exe not found in this folder.</string>
+    <string name="wow_status_pending">Ready to play — game files will be prepared on first launch.</string>
+    <string name="wow_status_first_login">Almost done! Log in once, then log out and exit: your controls will be configured automatically.</string>
+    <string name="wow_status_ready">Everything is configured. Have fun!</string>
+    <string name="wow_preparing_game">Preparing game…</string>
+    <string name="wow_provision_failed">Unable to prepare the game folder</string>
+    <string name="wow_container_failed">Unable to create the container</string>
+    <string name="wow_container_not_created_yet">Container not created yet — press PLAY first</string>
+    <string name="wow_realm_server">Realm server</string>
+    <string name="wow_custom_realmlist">Custom…</string>
+    <string name="wow_custom_realmlist_hint">logon.example.com</string>
+    <string name="wow_resolution">Resolution</string>
+    <string name="wow_view_distance">View distance</string>
+    <string name="wow_detected_locale">Detected client locale</string>
+    <string name="wow_settings_note">Change these only while the game is closed — WoW overwrites its config on exit.</string>
+    <string name="wow_settings_saved">Settings saved</string>
+    <string name="wow_save">Save</string>
     <string name="run">Run</string>
     <string name="edit">Edit</string>
     <string name="remove">Remove</string>

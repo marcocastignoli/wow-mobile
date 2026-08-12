@@ -44,7 +44,7 @@ public abstract class RootFSInstaller {
         }
     }
 
-    public static void install(final MainActivity activity) {
+    public static void install(final AppCompatActivity activity) {
         AppUtils.keepScreenOn(activity);
         RootFS rootFS = RootFS.find(activity);
         final File rootDir = rootFS.getRootDir();
@@ -77,7 +77,7 @@ public abstract class RootFSInstaller {
         });
     }
 
-    public static void installIfNeeded(final MainActivity activity) {
+    public static void installIfNeeded(final AppCompatActivity activity) {
         RootFS rootFS = RootFS.find(activity);
         if (!rootFS.isValid() || rootFS.getVersion() < LATEST_VERSION) install(activity);
     }
