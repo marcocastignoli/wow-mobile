@@ -54,25 +54,32 @@ public abstract class GPUHelper {
             egl.eglChooseConfig(eglDisplay, attribList, configs, 1, configCounts);
 
             attribList = new int[]{EGL14.EGL_CONTEXT_CLIENT_VERSION, 2, EGL10.EGL_NONE};
-            EGLContext eglContext = egl.eglCreateContext(eglDisplay, configs[0], EGL10.EGL_NO_CONTEXT, attribList);
+            // Calling glGetString without a current context crashes natively, so bail
+            // out (leaving empty values) if any step of the EGL setup fails.
+            if (configCounts[0] > 0) {
+                EGLContext eglContext = egl.eglCreateContext(eglDisplay, configs[0], EGL10.EGL_NO_CONTEXT, attribList);
+                if (eglContext != EGL10.EGL_NO_CONTEXT &&
+                    egl.eglMakeCurrent(eglDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, eglContext)) {
+                    GL10 gl = (GL10)eglContext.getGL();
+                    String gpuRenderer = Objects.toString(gl.glGetString(GL10.GL_RENDERER), "");
+                    String gpuVendor = Objects.toString(gl.glGetString(GL10.GL_VENDOR), "");
+                    String gpuVersion = Objects.toString(gl.glGetString(GL10.GL_VERSION), "");
 
-            egl.eglMakeCurrent(eglDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, eglContext);
+                    gpuInfo.put("renderer", gpuRenderer);
+                    gpuInfo.put("vendor", gpuVendor);
+                    gpuInfo.put("version", gpuVersion);
 
-            GL10 gl = (GL10)eglContext.getGL();
-            String gpuRenderer = Objects.toString(gl.glGetString(GL10.GL_RENDERER), "");
-            String gpuVendor = Objects.toString(gl.glGetString(GL10.GL_VENDOR), "");
-            String gpuVersion = Objects.toString(gl.glGetString(GL10.GL_VERSION), "");
+                    final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+                    preferences.edit()
+                        .putString("gpu_renderer", gpuRenderer)
+                        .putString("gpu_vendor", gpuVendor)
+                        .putString("gpu_version", gpuVersion)
+                        .apply();
 
-            gpuInfo.put("renderer", gpuRenderer);
-            gpuInfo.put("vendor", gpuVendor);
-            gpuInfo.put("version", gpuVersion);
-
-            final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-            preferences.edit()
-                .putString("gpu_renderer", gpuRenderer)
-                .putString("gpu_vendor", gpuVendor)
-                .putString("gpu_version", gpuVersion)
-                .apply();
+                    egl.eglMakeCurrent(eglDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+                    egl.eglDestroyContext(eglDisplay, eglContext);
+                }
+            }
 
             synchronized (thread) {
                 thread.notify();

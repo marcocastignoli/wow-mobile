@@ -82,6 +82,8 @@ Java_com_winlator_core_GPUHelper_vkGetApiVersion() {
     PFN_vkEnumeratePhysicalDevices vkEnumeratePhysicalDevices = dlsym(libvulkan, "vkEnumeratePhysicalDevices");
     PFN_vkGetPhysicalDeviceProperties vkGetPhysicalDeviceProperties = dlsym(libvulkan, "vkGetPhysicalDeviceProperties");
     PFN_vkGetPhysicalDeviceFeatures vkGetPhysicalDeviceFeatures = dlsym(libvulkan, "vkGetPhysicalDeviceFeatures");
+    if (!vkCreateInstance || !vkDestroyInstance || !vkEnumeratePhysicalDevices ||
+        !vkGetPhysicalDeviceProperties || !vkGetPhysicalDeviceFeatures) goto done;
 
     VkInstanceCreateInfo createInfo = {0};
     createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
@@ -90,9 +92,10 @@ Java_com_winlator_core_GPUHelper_vkGetApiVersion() {
     if (result != VK_SUCCESS) goto done;
 
     uint32_t deviceCount = 1;
-    VkPhysicalDevice physicalDevice;
+    VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
     result = vkEnumeratePhysicalDevices(instance, &deviceCount, &physicalDevice);
-    if (result != VK_SUCCESS && result != VK_INCOMPLETE) goto done;
+    if ((result != VK_SUCCESS && result != VK_INCOMPLETE) || deviceCount == 0 ||
+        physicalDevice == VK_NULL_HANDLE) goto done;
 
     VkPhysicalDeviceProperties properties = {0};
     vkGetPhysicalDeviceProperties(physicalDevice, &properties);

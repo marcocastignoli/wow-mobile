@@ -217,7 +217,7 @@ public class WowMobileActivity extends AppCompatActivity {
         String title = dir.getPath().replace(Environment.getExternalStorageDirectory().getPath(), getString(R.string.internal_storage));
         if (candidate.isValid()) title += " ✓";
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Dialog_Alert);
         builder.setTitle(title);
 
         ListView listView = new ListView(this);

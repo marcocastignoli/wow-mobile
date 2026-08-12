@@ -104,9 +104,11 @@ public class WowContainerHelper {
         File shortcutFile = new File(desktopDir, SHORTCUT_NAME+".desktop");
         String dosPath = WineUtils.unixToDOSPath(gameFolder.getWowExe().getPath(), container);
 
+        // Shortcut.unescapeDOSPath applies its unescape pass twice, so the stored
+        // Exec path needs two rounds of escaping to survive parsing.
         String content = "[Desktop Entry]\n" +
             "Name="+SHORTCUT_NAME+"\n" +
-            "Exec=wine "+StringUtils.escapeDOSPath(dosPath)+"\n" +
+            "Exec=wine "+StringUtils.escapeDOSPath(StringUtils.escapeDOSPath(dosPath))+"\n" +
             "StartupWMClass=wow.exe\n" +
             "\n[Extra Data]\n";
 
