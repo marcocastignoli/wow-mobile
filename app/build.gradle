@@ -26,6 +26,14 @@ android {
         checkReleaseBuilds false
     }
 
+    // CMake declares the jniLibs prebuilts as IMPORTED SHARED targets, so AGP sees
+    // each .so twice (jniLibs merge + cxx output). Both copies are identical files.
+    packagingOptions {
+        jniLibs {
+            pickFirsts.add('lib/arm64-v8a/*.so')
+        }
+    }
+
     ndkVersion '24.0.8215888'
 
     externalNativeBuild {
