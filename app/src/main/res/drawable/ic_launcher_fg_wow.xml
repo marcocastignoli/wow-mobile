@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Gold "W" mark -->
+    <path
+        android:pathData="M33,42 L41,66 L49,50 L57,66 L65,42"
+        android:strokeColor="#F8B700"
+        android:strokeWidth="7"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000"/>
+    <!-- Underline hinting at a game controller d-pad axis -->
+    <path
+        android:pathData="M38,73 L70,73"
+        android:strokeColor="#FFD75E"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"/>
+</vector>
