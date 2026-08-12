@@ -204,9 +204,13 @@ public class Provisioner {
         if (file.isFile()) {
             for (String line : FileUtils.readString(file).split("\n")) {
                 String trimmed = line.trim();
-                // Drop previous active lines; keep comments and blanks as-is
+                // Comment out previous active lines (so they stay available as
+                // choices in the realm switcher); keep comments and blanks as-is
                 if (!trimmed.isEmpty() && !trimmed.startsWith("#") &&
-                    trimmed.toLowerCase().startsWith("set realmlist")) continue;
+                    trimmed.toLowerCase().startsWith("set realmlist")) {
+                    if (!trimmed.equalsIgnoreCase("set realmlist "+host)) kept.add("# "+trimmed);
+                    continue;
+                }
                 kept.add(line.replace("\r", ""));
             }
         }
