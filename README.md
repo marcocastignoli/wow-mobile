@@ -33,9 +33,9 @@ for it automatically. From then on everything just works.
 
 Grab the APK from [Releases](../../releases) and sideload it.
 
-> **Note:** WoW Mobile cannot be installed alongside the original Winlator
-> (they share the same application id — the Wine rootfs hardcodes it).
-> Uninstall Winlator first. Your game folder on shared storage is not touched.
+> **Note:** WoW Mobile uses its own application id (`it.wowmobile`), so it
+> installs alongside the original Winlator without touching it. All asset
+> archives (rootfs, drivers, box64) are re-patched at build time to match.
 
 You need to provide your own World of Warcraft 3.3.5a (build 12340) client
 folder on the phone's storage. No game files are distributed with this app.
