@@ -9,6 +9,7 @@ it keeps the Wine + Box64 engine and wraps it in a three-screen app.
 
 <img width="1280" height="576" alt="2026-08-13 16 01 33" src="https://github.com/user-attachments/assets/26b5064c-814d-469b-a28b-becea41696cf" />
 
+60fps on Pixel 8
 
 ## What it does
 
