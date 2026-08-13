@@ -51,8 +51,8 @@ folder on the phone's storage. No game files are distributed with this app.
 | R1 / R2 | Q / E | CP_T1 / CP_T2 |
 | BACK / MENU | G / V | CP_X_LEFT / CP_X_RIGHT |
 | LOOK (toggle) | Right mouse | Camera |
-| CLICK | Left mouse | Cursor click |
-| LOOT | F | Interact with target |
+| LCLICK / RCLICK | Left / right mouse | Cursor clicks |
+| M | M | Map |
 | JUMP / TGT | Space / Tab | Jump / target enemy |
 
 ## Building
