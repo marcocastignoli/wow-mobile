@@ -7,6 +7,9 @@ no manual setup, no fiddling with Wine, bindings or addons.
 WoW Mobile is a single-purpose fork of [Winlator](https://github.com/brunodev85/winlator):
 it keeps the Wine + Box64 engine and wraps it in a three-screen app.
 
+<img width="1280" height="576" alt="2026-08-13 16 01 33" src="https://github.com/user-attachments/assets/26b5064c-814d-469b-a28b-becea41696cf" />
+
+
 ## What it does
 
 1. **Play** — pick the folder that contains `Wow.exe` and press PLAY.
