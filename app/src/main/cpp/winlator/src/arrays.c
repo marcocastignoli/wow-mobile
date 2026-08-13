@@ -165,6 +165,13 @@ static int hashCode(const char* key) {
     return hash;
 }
 
+int IntArray_indexOf(IntArray* intArray, int value) {
+    for (int i = 0; i < intArray->size; i++) {
+        if (intArray->values[i] == value) return i;
+    }
+    return -1;
+}
+
 void IntArray_add(IntArray* intArray, int value) {
     ENSURE_ARRAY_CAPACITY((intArray->size + 1) * sizeof(int), intArray->capacity, intArray->values, 1);
     intArray->values[intArray->size++] = value;

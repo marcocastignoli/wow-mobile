@@ -41,6 +41,7 @@ typedef struct IntArray {
     int* values;
 } IntArray;
 
+extern int IntArray_indexOf(IntArray* intArray, int value);
 extern void IntArray_add(IntArray* intArray, int value);
 extern void IntArray_addAt(IntArray* intArray, int index, int value);
 extern void IntArray_addAll(IntArray* intArray, int valueCount, ...);
