@@ -12,7 +12,7 @@
     <string name="wow_status_select_folder">Select the folder that contains Wow.exe to get started.</string>
     <string name="wow_status_invalid_folder">Wow.exe not found in this folder.</string>
     <string name="wow_status_pending">Ready to play — game files will be prepared on first launch.</string>
-    <string name="wow_status_first_login">Almost done! Log in once, then log out and exit: your controls will be configured automatically.</string>
+    <string name="wow_status_first_login">Almost done! Log in once, then exit the game and press PLAY again: your controls will be configured automatically. If the addon shows a controller setup screen on that first login, just ignore it.</string>
     <string name="wow_status_ready">Everything is configured. Have fun!</string>
     <string name="wow_preparing_game">Preparing game…</string>
     <string name="wow_provision_failed">Unable to prepare the game folder</string>

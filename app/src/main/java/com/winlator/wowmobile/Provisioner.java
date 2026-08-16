@@ -107,7 +107,9 @@ public class Provisioner {
             }
 
             // Per-account steps: applied as soon as the account folder exists
-            // (which happens after the first login + logout).
+            // (which happens after the first login). Run on every provision — both
+            // steps are idempotent, and this self-heals a config half-written by
+            // interacting with the addon's wizard during the very first session.
             JSONObject provisionedAccounts = marker.optJSONObject("accounts");
             if (provisionedAccounts == null) {
                 provisionedAccounts = new JSONObject();
@@ -116,9 +118,9 @@ public class Provisioner {
 
             for (File accountDir : gameFolder.getAccountDirs()) {
                 String name = accountDir.getName();
+                patchBindingsCache(accountDir);
+                seedSavedVariables(accountDir);
                 if (provisionedAccounts.optInt(name, 0) < PROVISION_VERSION) {
-                    patchBindingsCache(accountDir);
-                    seedSavedVariables(accountDir);
                     provisionedAccounts.put(name, PROVISION_VERSION);
                     saveMarker();
                 }
@@ -354,7 +356,14 @@ public class Provisioner {
         if (!savedVariablesDir.isDirectory() && !savedVariablesDir.mkdirs()) return;
 
         File file = new File(savedVariablesDir, "ConsolePort.lua");
-        if (file.isFile() && FileUtils.readString(file).contains("ConsolePortSettings")) return;
+        if (file.isFile()) {
+            String content = FileUtils.readString(file);
+            // A complete configuration has our (or the wizard's) key calibration.
+            // Anything else is a half-finished wizard state saved during the first
+            // session — back it up and replace it, or the wizard reopens forever.
+            if (content.contains("ConsolePortSettings") && content.contains("[\"calibration\"]")) return;
+            FileUtils.copy(file, new File(savedVariablesDir, "ConsolePort.lua.bak"));
+        }
 
         String seed =
             "ConsolePortSettings = {\n" +
